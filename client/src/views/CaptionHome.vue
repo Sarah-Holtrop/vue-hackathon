@@ -2,63 +2,63 @@
   <div class="hackathon caption this container">
     <div class="row">
       <div class="col-12">
-    <h1>Caption THIS!</h1>
-    
-  <p>
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-      aria-controls="collapseExample">
-      Add Caption
-    </a>
-  </p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-    <div class="input-group input-group-sm mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
-      </div>
-      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-    </div>
-    <div class="input-group input-group-sm mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Caption</span>
-      </div>
-      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-    </div>
-    <button type="button" class="btn btn-primary">Post</button>
-    </div>
-  </div>
+        <h1>Caption THIS!</h1>
 
-    <!-- <button type="button" class="btn btn-primary">Post</button> -->
-    <hr>
-</div>
-<!--SECTION Sort-by dropdown-->
-<div class="row">
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle mb-5" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-      aria-haspopup="true" aria-expanded="false">
-      Sort By
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Newest</a>
-      <a class="dropdown-item" href="#">Popular</a>
-      <a class="dropdown-item" href="#">Favorites</a>
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            Add Caption
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Caption</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <button type="button" class="btn btn-primary">Post</button>
+          </div>
+        </div>
+
+        <!-- <button type="button" class="btn btn-primary">Post</button> -->
+        <hr>
+      </div>
+      <!--SECTION Sort-by dropdown-->
+      <div class="row">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle mb-5" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort By
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Newest</a>
+            <a class="dropdown-item" href="#">Popular</a>
+            <a class="dropdown-item" href="#">Favorites</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--SECTION Captions/Title -->
+    <div class="row justify-content-center">
+      <div class="col-8 card m-2">
+        This is some text within a card body where the post "title" will go.
+      </div>
+      <div class="col-8 card m-2">
+        This is some text within a card body where the post "title" will go.
+      </div>
+      <div class="col-8 card m-2">
+        This is some text within a card body where the post "title" will go.
+      </div>
     </div>
   </div>
-</div>
-</div>
-<!--SECTION Captions/Title -->
-<div class="row justify-content-center">
-  <div class="col-8 card m-2">
-    This is some text within a card body where the post "title" will go.
-  </div>
-  <div class="col-8 card m-2">
-    This is some text within a card body where the post "title" will go.
-  </div>
-  <div class="col-8 card m-2">
-    This is some text within a card body where the post "title" will go.
-  </div>
-  </div>
-</div>
 
 </template>
 
@@ -88,7 +88,7 @@
       },
       addPost() {
         this.$store.dispatch('addPost', this.newPost)
-      }
+      },
     },
     components: {}
   }
