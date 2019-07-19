@@ -1,14 +1,16 @@
 <template>
   <div class="hackathon caption this container">
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-12">
     <h1>Caption THIS!</h1>
+    
     <button type="button" class="btn btn-primary">Post</button>
+    <hr>
 </div>
 <!--SECTION Sort-by dropdown-->
 <div class="row">
   <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+    <button class="btn btn-secondary dropdown-toggle mb-5" type="button" id="dropdownMenuButton" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
       Sort By
     </button>
@@ -19,10 +21,15 @@
     </div>
   </div>
 </div>
-
+</div>
+<!--SECTION Captions/Title -->
+<div class="row justify-content-center">
+  <div class="col-8 card m-1">
+    This is some text within a card body where the post "title" will go.
+  </div>
+  </div>
 </div>
 
-  </div>
 </template>
 
 
