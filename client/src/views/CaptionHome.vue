@@ -1,41 +1,27 @@
 <template>
-  <div class="post container">
-    <h1>Caption THIS!!!!</h1>
+  <div class="hackathon caption this container">
     <div class="row justify-content-center">
-      <form class="col-8 pb-5" @submit.prevent="addImage">
-        <div class="form-group">
-          <label for="make">Make</label>
-          <input type="text" name="make" class="form-control" id="make" placeholder="Enter make" v-model="newCar.make">
-        </div>
-        <div class="form-group">
-          <label for="model">Model</label>
-          <input type="text" class="form-control" id="model" placeholder="Enter Model" v-model="newCar.model">
-        </div>
-        <div class="form-group">
-          <label for="img">Image</label>
-          <input type="text" class="form-control" id="img" placeholder="Enter image url" v-model="newCar.imgUrl">
-        </div>
-        <div class="form-group">
-          <label for="price">Price</label>
-          <input type="number" class="form-control" id="price" v-model="newCar.price">
-        </div>
-        <div class="form-group">
-          <label for="year">Year</label>
-          <input type="number" class="form-control" min="1950" id="year" v-model="newCar.year">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      <div class="col-12">
+    <h1>Caption THIS!</h1>
+    <button type="button" class="btn btn-primary">Post</button>
+</div>
+<!--SECTION Sort-by dropdown-->
+<div class="row">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Sort By
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Newest</a>
+      <a class="dropdown-item" href="#">Popular</a>
+      <a class="dropdown-item" href="#">Favorites</a>
     </div>
-    <div class="row">
-      <!-- cars in the v-for references the method name of the computed called "cars" -->
-      <div class="car col-4 border rounded border-secondary" v-for="car in cars" @click="viewCar(car)">
-        <h5>{{car.make}}</h5>
-        <img :src="car.imgUrl" alt="">
-        <p>{{car.model}}</p>
-        <p>{{car.year}}</p>
-        <p>{{car.price}}</p>
-      </div>
-    </div>
+  </div>
+</div>
+
+</div>
+
   </div>
 </template>
 
