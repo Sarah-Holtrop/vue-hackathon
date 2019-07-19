@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-
 Vue.use(Vuex)
 
-let api = axios.create({
+const postApi = axios.create({
   baseURL: '//localhost:3000/api/posts'
 })
 
@@ -22,43 +21,41 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async getPosts({ dispatch, commit }) {
+    // region --Posts --
+    async getPosts({ commit, dispatch }) {
       try {
-        let res = await api.get('')
-        commit("setPosts", res.data.data)
+        let res = await postApi.get('')
+        commit('setPosts', res.data)
       } catch (error) {
         console.error(error)
       }
     },
-    // if we need to receive more than one value we use a payload parameter and expect it to be an object
-    async getPostById({ dispatch, commit }, payload) {
+    async addPost({ commit, dispatch }, payload) {
       try {
-        let res = await api.get('' + payload.postId)
-        commit('setActivePost', res.data.data)
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    async deletePost({ dispatch, commit }, payload) {
-      try {
-        //payload was our carId from the car.vue component method deleteCar
-        let res = await api.delete('posts/' + payload)
-        //we could go get all the cars again but we are just gonna push back to the cars view which already on mounted makes a request to get all the cars. if we were able to delete on the cars view we would call get all cars again
-        // dispatch('getCars')
-        router.push({ name: 'posts' })
-        console.log(res)
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    async addPost({ dispatch, commit }, payload) {
-      try {
-        let res = await api.post('', payload)
+        await postApi.post('', payload)
         dispatch('getPosts')
       } catch (error) {
         console.error(error)
-        console.log("It works!")
       }
     },
+    // #endregion
+    // #region --Active Post--
+    async deletePost({ commit, dispatch }, payload) {
+      try {
+        await postApi.delete('' + payload)
+        dispatch('getPosts')
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getOnePost({ commit, dispatch }, payload) {
+      try {
+        let res = await postApi.get('' + payload)
+        commit('setActivePost', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    // #endregion
   }
 })

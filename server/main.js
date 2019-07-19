@@ -13,3 +13,16 @@ server.use(bp.json())
 server.use('/', express.static(__dirname + '/../public'))
 server.use('/api/posts', new PostsController().router)
 
+function defaultErrorHandler(req, res, next) {
+  res.status(404).send('route not found')
+}
+
+server.use('*', defaultErrorHandler)
+
+server.use((error, req, res, next) => {
+  res.status(error.status || 400).send(error)
+})
+
+server.listen(port, () => {
+  console.log('Your server is running on port: ', port)
+})
