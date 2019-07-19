@@ -28,29 +28,29 @@
 
 <script>
   export default {
-    name: 'cars',
+    name: 'captionThis',
     data() {
       return {
-        newCar: {}
+        newPost: {}
       }
     },
     mounted() {
-      this.$store.dispatch('getCars')
+      this.$store.dispatch('getPosts')
     },
     computed: {
       // this references the collection on our store's state
-      cars() {
-        return this.$store.state.cars
+      posts() {
+        return this.$store.state.posts
       }
     },
     methods: {
-      viewCar(car) {
+      viewPost(post) {
         // we could pass the car to the state to set as active, but if we refresh we would lose the data in our state and our car view will break, we will trust the view itself to load the correct car from the server
-        this.$router.push({ name: 'car', params: { carId: car._id } })
+        this.$router.push({ name: 'post', params: { postId: post._id } })
 
       },
-      addCar() {
-        this.$store.dispatch('addCar', this.newCar)
+      addPost() {
+        this.$store.dispatch('addPost', this.newPost)
       }
     },
     components: {}
