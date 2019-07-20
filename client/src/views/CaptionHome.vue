@@ -50,8 +50,11 @@
     </div>
     <!--SECTION Captions/Title -->
     <div class="row justify-content-center">
-      <div class="col-8 card m-2" v-for="post in posts">
-        <!--NOTE Caption goes here-->
+      <div class="col-8 card m-2" v-for="post in posts" @click="viewPost(post)">
+        <!-- <router-link :to="{ name: 'post', params: { postId }}">
+          <h3>{{post.title}}</h3>
+          <h5>by {{post.author}}</h5>
+        </router-link> -->
         <h3>{{post.title}}</h3>
         <h5>by {{post.author}}</h5>
       </div>
@@ -82,12 +85,15 @@
     methods: {
       viewPost(post) {
         // we could pass the car to the state to set as active, but if we refresh we would lose the data in our state and our car view will break, we will trust the view itself to load the correct car from the server
-        this.$router.push({ name: 'post', params: { postId: post._id } })
+        this.$router.push({ name: 'thread-page', params: { postId: post._id } })
 
       },
       addPost() {
         this.$store.dispatch('addPost', this.newPost)
       },
+      // getOnePost() {
+      //   this.$store.dispatch('getOnePost', params: { postId: post._id }) 
+      // }
     },
     components: {}
   }

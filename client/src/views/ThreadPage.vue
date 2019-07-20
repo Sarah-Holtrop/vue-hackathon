@@ -21,11 +21,11 @@
       return {}
     },
     mounted() {
-      let dataToSend = {
-        postId: this.$route.params.postId
-      }
+      // let dataToSend = {
+      //   postId: this.$route.params.postId
+      // }
       // if we need to pass more than one argument, we build a payload object to send "dataToSend"
-      this.$store.dispatch('getPostById', dataToSend)
+      this.$store.dispatch('getOnePost', this.$route.params.postId)
     },
     computed: {
       post() {
