@@ -10,7 +10,8 @@ const postApi = axios.create({
 export default new Vuex.Store({
   state: {
     posts: [],
-    activePost: {}
+    activePost: {},
+    comments: []
   },
   mutations: {
     setPosts(state, data) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     setActivePost(state, data) {
       state.activePost = data
+    },
+    setComments(state, data) {
+      state.comments = data
     }
   },
   actions: {
@@ -43,7 +47,7 @@ export default new Vuex.Store({
     async deletePost({ commit, dispatch }, payload) {
       try {
         await postApi.delete('posts/' + payload)
-        dispatch('getPosts')
+        dispatch('get')
       } catch (error) {
         console.error(error)
       }
@@ -52,13 +56,40 @@ export default new Vuex.Store({
       try {
         let res = await postApi.get('posts/' + payload)
         commit('setActivePost', res.data)
+        dispatch('getCommentsByPost')
       } catch (error) {
         console.error(error)
       }
     },
     // #endregion
-    // #retion --Comments --
-
+    // #region --Comments --
+    async getCommentsByPost({ commit, dispatch }, payload) { //payload is the postId
+      try {
+        let res = await postApi.get('/:postId/comments')
+        commit('setComments', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async addComment({ commit, dispatch }, payload) {
+      try {
+        await postApi.post('comments/', payload)
+        commit('')
+        dispatch('getOnePost')
+        dispatch('getCommentsByPost')
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async deleteComment({ commit, dispatch }, payload) { //payload is commentId
+      try {
+        await postApi.delete('comments/' + payload)
+        dispatch('getOnePost')
+        dispatch('getCommentsByPost')
+      } catch (error) {
+        console.error(error)
+      }
+    }
     // #endregion
   }
 })
