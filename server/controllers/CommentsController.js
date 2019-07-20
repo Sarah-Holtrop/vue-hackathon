@@ -1,2 +1,0 @@
-//addComment, deleteComment,
-//editPost, deletePost, 

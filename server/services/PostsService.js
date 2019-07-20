@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose from 'mongoose'
 
 let ObjectId = mongoose.Schema.Types.ObjectId
 

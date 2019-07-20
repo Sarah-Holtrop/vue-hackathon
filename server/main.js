@@ -4,6 +4,7 @@ import './db/dbconfig'
 import cors from 'cors'
 
 import PostsController from './controllers/PostsController'
+import CommentController from './controllers/CommentController'
 
 let port = 3000
 
@@ -12,6 +13,7 @@ server.use(cors())
 server.use(bp.json())
 server.use('/', express.static(__dirname + '/../public'))
 server.use('/api/posts', new PostsController().router)
+server.use('/api/comments', new CommentController().router)
 
 function defaultErrorHandler(req, res, next) {
   res.status(404).send('route not found')
