@@ -56,16 +56,19 @@ export default new Vuex.Store({
       try {
         let res = await postApi.get('posts/' + payload)
         commit('setActivePost', res.data)
-        dispatch('getCommentsByPost')
+        dispatch('getCommentsByPost', payload)
       } catch (error) {
         console.error(error)
       }
+    },
+    setActivePost({ commit }, payload) {
+      commit("setActivePost", payload)
     },
     // #endregion
     // #region --Comments --
     async getCommentsByPost({ commit, dispatch }, payload) { //payload is the postId
       try {
-        let res = await postApi.get('/:postId/comments')
+        let res = await postApi.get('posts/'+ payload + '/comments')
         commit('setComments', res.data)
       } catch (error) {
         console.error(error)
@@ -73,10 +76,11 @@ export default new Vuex.Store({
     },
     async addComment({ commit, dispatch }, payload) {
       try {
-        await postApi.post('comments/', payload)
-        commit('')
-        dispatch('getOnePost')
-        dispatch('getCommentsByPost')
+        // debugger
+        let res = await postApi.post('comments/', payload)
+        commit('setComments', res.data)
+        // dispatch('getOnePost')s
+        dispatch('getCommentsByPost', payload.postId)
       } catch (error) {
         console.error(error)
       }

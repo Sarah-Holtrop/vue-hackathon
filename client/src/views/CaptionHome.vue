@@ -86,6 +86,7 @@
       viewPost(post) {
         // we could pass the car to the state to set as active, but if we refresh we would lose the data in our state and our car view will break, we will trust the view itself to load the correct car from the server
         this.$router.push({ name: 'thread-page', params: { postId: post._id } })
+        this.$store.dispatch("setActivePost", post)
 
       },
       addPost() {
