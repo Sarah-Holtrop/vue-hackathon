@@ -55,7 +55,10 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
-    }
+    },
+    // #endregion
+    // #retion --Comments --
+
     // #endregion
   }
 })
