@@ -1,6 +1,14 @@
 <template>
-  <div class="post"> <!--NOTE Individual post page-->
-
+  <div class="container post"> <!--NOTE Individual post page-->
+<div class="row">
+  <h5>{{post.author}}</h5>
+  <div class="col-10 justify-content-center">
+    <h1>{{post.title}}</h1>
+    <div class="col-10 float-left">
+      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+    </div>
+  </div>
+</div>
 
   </div>
 </template>
