@@ -11,21 +11,23 @@
           </a>
         </p>
         <div class="collapse" id="collapseExample">
+          <form @submit.prevent="addPost">
           <div class="card card-body">
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
               </div>
-              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="newPost.author">
             </div>
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Caption</span>
               </div>
-              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="newPost.title">
             </div>
-            <button type="button" class="btn btn-primary">Post</button>
+            <button type="submit" class="btn btn-primary">Post</button>
           </div>
+          </form>
         </div>
 
         <!-- <button type="button" class="btn btn-primary">Post</button> -->
@@ -48,15 +50,12 @@
     </div>
     <!--SECTION Captions/Title -->
     <div class="row justify-content-center">
-      <div class="col-8 card m-2">
-        This is some text within a card body where the post "title" will go.
+      <div class="col-8 card m-2" v-for="post in posts">
+        <!--NOTE Caption goes here-->
+        <h3>{{post.title}}</h3>
+        <h5>by {{post.author}}</h5>
       </div>
-      <div class="col-8 card m-2">
-        This is some text within a card body where the post "title" will go.
-      </div>
-      <div class="col-8 card m-2">
-        This is some text within a card body where the post "title" will go.
-      </div>
+    
     </div>
   </div>
 
@@ -96,7 +95,7 @@
 
 
 <style scoped>
-  img {
-    height: 200px;
+  .card{
+    /* TODO Style the caption cards however we wish */
   }
 </style>
