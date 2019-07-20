@@ -2,11 +2,12 @@
   <div class="container post">
     <!--NOTE Individual post page-->
     <div class="row">
-      <h5>{{post.author}}</h5>
-      <div class="col-10 justify-content-center">
-        <h1>{{post.title}}</h1>
-        <div class="col-10 float-left">
-          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      <h5>Author: {{post.author}}</h5>
+      <div class="col-12 justify-content-center">
+        <h1>Title: {{post.title}}</h1>
+        <div class="col-12 float-left">
+          <!-- <button type="submit" class="btn btn-danger btn-sm text-align-center mb-2">Delete</button> -->
+          <button class="btn btn-danger mb-2" @click="deletePost">Delete</button>
         </div>
       </div>
     </div>
@@ -23,9 +24,23 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
-    <div class="row">
-<img v-for="comment in comments" :src="comment.img" alt="">
-      
+    <!-- <div class="row"> -->
+
+    <!-- <div class="card" style="width: 18rem;">
+  <img class="comment in comments" :src="comment.img" alt="">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+    </p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> -->
+
+    <div class="card card-body">
+      <img v-for="comment in comments" :src="comment.img" alt="">
+
+      <!-- </div> -->
+
     </div>
 
 
@@ -54,13 +69,13 @@
       post() {
         return this.$store.state.activePost
       },
-      comments(){
+      comments() {
         return this.$store.state.comments
       }
     },
     methods: {
       deletePost() {
-        this.$store.dispatch('deletePost', this.post._id)
+        this.$store.dispatch('deletePost', this.postId)
       },
       addComment() {
         // debugger
@@ -75,9 +90,9 @@
 
 
 <style scoped>
-img{
-  height: 100px;
-  background-repeat: no-repeat
-
-}
+  img {
+    object-fit: scale-down;
+    height: 100px;
+    /* background-repeat: no-repeat */
+  }
 </style>

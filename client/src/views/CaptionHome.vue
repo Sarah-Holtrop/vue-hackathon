@@ -12,21 +12,23 @@
         </p>
         <div class="collapse" id="collapseExample">
           <form @submit.prevent="addPost">
-          <div class="card card-body">
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+            <div class="card card-body">
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                  v-model="newPost.author">
               </div>
-              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="newPost.author">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Caption</span>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Caption</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                  v-model="newPost.title">
               </div>
-              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="newPost.title">
+              <button type="submit" class="btn btn-primary">Post</button>
             </div>
-            <button type="submit" class="btn btn-primary">Post</button>
-          </div>
           </form>
         </div>
 
@@ -58,7 +60,7 @@
         <h3>{{post.title}}</h3>
         <h5>by {{post.author}}</h5>
       </div>
-    
+
     </div>
   </div>
 
@@ -102,7 +104,7 @@
 
 
 <style scoped>
-  .card{
-    /* TODO Style the caption cards however we wish */
-  }
+  /* .card{ */
+  /* TODO Style the caption cards however we wish */
+  /* } */
 </style>

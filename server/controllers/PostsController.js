@@ -9,6 +9,7 @@ export default class PostsController {
       .get('/:postId', this.getPostById)
       .get('/:postId/comments', this.getCommentsByPostId) // GET api/posts/:postId/comments
       .post('', this.createPost)
+      .delete('/:postId', this.deletePost)
   }
 
   async getCommentsByPostId(req, res, next) {
@@ -39,6 +40,14 @@ export default class PostsController {
     try {
       let newPost = await _postsService.create(req.body)
       res.send(newPost)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async deletePost(req, res, next) {
+    try {
+      await _postsService.findByIdAndDelete(req.params.postId)
+      res.send("Successfully removed post")
     } catch (error) {
       next(error)
     }

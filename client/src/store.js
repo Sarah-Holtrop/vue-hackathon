@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from './router'
 Vue.use(Vuex)
 
 const postApi = axios.create({
@@ -47,7 +48,8 @@ export default new Vuex.Store({
     async deletePost({ commit, dispatch }, payload) {
       try {
         await postApi.delete('posts/' + payload)
-        dispatch('get')
+        dispatch('getPosts')
+        router.push({ name: 'CaptionHome' })
       } catch (error) {
         console.error(error)
       }
@@ -68,7 +70,7 @@ export default new Vuex.Store({
     // #region --Comments --
     async getCommentsByPost({ commit, dispatch }, payload) { //payload is the postId
       try {
-        let res = await postApi.get('posts/'+ payload + '/comments')
+        let res = await postApi.get('posts/' + payload + '/comments')
         commit('setComments', res.data)
       } catch (error) {
         console.error(error)
